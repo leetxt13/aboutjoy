@@ -24,6 +24,9 @@
     <!--JAVA(defer 추가필수), CSS파일 연동-->
     <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
+ <!-- video.js플러그인 -->
+    <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet" />
+<script src="http://vjs.zencdn.net/c/video.js"></script>
   </head>
 
   <body>
@@ -34,7 +37,7 @@
         <a href="#">JoyLee</a>
       </div>
       <!-- Navbar Menu -->
-      <div>
+      <div class="Navbar__menu">
         <ul class="navbar__menu">
           <li class="navbar__menu__item active">Home</li>
           <li class="navbar__menu__item">About</li>
@@ -45,6 +48,11 @@
         </ul>
       </div>
     </nav>
+
+    <!--Toggle button-->
+<button class="navbar__toggle-btn">
+  <i class="fa-sharp fa-solid fa-bars"></i>
+</button>
 
     <!-- home -->
     <section id="home" class="section">
@@ -154,6 +162,7 @@
               <div class="skill__value" style="width :30%;"></div>
             </div>
           </div>
+          
         
 
         <!--tools, etc 작성-->
@@ -224,15 +233,18 @@
         <span>서울중앙 민원실 아크릴 가림막</br>제작 설치 업무 수행</span>
         </div>
       </a>
+      
     </div>
      </div>
   </section> 
+
+
 
     <!-- testimonials -->
     <section id="testimonials" class="section">
       <div class="section__container">
      <h1>Testimonials</h1>
-     <h3>사람들의 나에 대한 이야기</h3>
+     <h3>사람들의 조이에 대한 이야기</h3>
   <div class="testimonials">
 
       <div class="testimonial"><img src="img/person photo.png" alt="people" class="testimonial__avatar">
@@ -265,6 +277,7 @@
 <p class="contact__rights">2023 JoyLee`s homepage, all rights reserved</p>
 </section>
 
+  
 
 
 
