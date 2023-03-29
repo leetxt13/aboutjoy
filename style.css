@@ -102,7 +102,7 @@ button {
 /*Toggle */
 .navbar__toggle-btn {
   position: absolute;
-  top: 15px;
+  top: 12px;
   right: 32px;
   font-size: var(--font-medium);
   color: var(--color-white);
@@ -110,13 +110,16 @@ button {
 }
 /* Navbar */
 #navbar {
+  position: fixed;
+  width: 100%;
+  background-color: var(--color-pink);
   display: flex;
   justify-content: space-between;
-  background-color: var(--color-blue);
   align-items: center;
   padding: 0 16px;
   margin: 0;
   color: var(--color-white);
+  transition: all 400ms ease-in-out;
 }
 .navbar__logo {
   font-size: var(--font-medium);
@@ -141,11 +144,17 @@ button {
 div a {
   margin: 0 2px;
 }
+/* JS를 통해, navbar dark 클래스가 추가되면 할일 */
+#navbar.navbar--dark {
+  background-color: var(--color-blue);
+  padding: 16 0px;
+}
 
 /*Home*/
 #home {
   background: url("img/background.png") center/ cover no-repeat;
   padding: 40px;
+  padding-top: 100px;
 }
 .home__avatar {
   width: 400px;
@@ -473,15 +482,15 @@ div a {
 
   .navbar__toggle-btn {
     display: block;
+    position: fixed;
   }
+
   #navbar {
     padding: 12px;
     flex-direction: column;
     align-items: flex-start;
   }
-  .Navbar__menu {
-    width: 100%;
-  }
+
   .navbar__menu {
     background-color: orange;
     flex-direction: column;
@@ -510,34 +519,31 @@ div a {
     display: flex;
     justify-content: center;
   }
-
-  .job__log__box .job__logo {
-    flex-basis: 40%;
+  .job .job__logo {
+    flex-basis: 25%;
+  }
+  .job2 .job__logo {
+    flex-basis: 50%;
   }
   .job {
     width: 100%;
     flex-direction: column;
-    margin: auto;
     margin-top: 25px;
     margin-bottom: 25px;
   }
-  .job .job__logo {
-    flex-basis: 25%;
-  }
+
   .job2 {
     width: 100%;
     flex-direction: column;
     margin-top: 20px;
+    margin-left: 8px;
   }
+
   .job .job__description {
-    flex-basis: 100%;
-    width: 100%;
     padding: 0;
     margin-top: 15px;
   }
   .job2 .job__description {
-    flex-basis: 100%;
-    width: 100%;
     padding: 0;
     margin-top: 15px;
   }
