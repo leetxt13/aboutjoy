@@ -9,3 +9,21 @@ document.addEventListener("scroll", () => {
     navbar.classList.remove("navbar--dark");
   }
 });
+// handle scrolling when tapping on the navbar menu
+const navbarMenu = document.querySelector(".navbar__menu");
+navbarMenu.addEventListener("click", (e) => {
+  if (e.target.dataset.link == null) {
+    return;
+  }
+  scrollIntoView(e.target.dataset.link);
+});
+
+function scrollIntoView(selector) {
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({ behavior: "smooth" });
+}
+
+const contact__btn = document.querySelector(".home__contact");
+contact__btn.addEventListener("click", () => {
+  scrollIntoView("#Contact");
+});

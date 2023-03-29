@@ -120,6 +120,7 @@ button {
   margin: 0;
   color: var(--color-white);
   transition: all 400ms ease-in-out;
+  z-index: 1;
 }
 .navbar__logo {
   font-size: var(--font-medium);
@@ -173,6 +174,10 @@ div a {
   font-weight: var(--weight-semi-bold);
   border: 2px solid var(--color-white);
   border-radius: var(--size-border-radius);
+}
+.home__contact:hover {
+  background-color: var(--color-pink);
+  border: 2px solid var(--color-black);
 }
 
 /*about*/
