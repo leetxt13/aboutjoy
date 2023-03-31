@@ -135,12 +135,12 @@ button {
   margin: 4px;
   cursor: pointer;
   border-radius: var(--size-border-radius);
+  border: 1px solid transparent;
 }
-.navbar__menu__item.active {
-  border: 1px solid var(--color-white);
-}
+
 .navbar__menu__item:hover {
   background-color: var(--color-dark-pink);
+  border-color: var(--color-white);
 }
 div a {
   margin: 0 2px;
@@ -322,9 +322,11 @@ div a {
   border-radius: var(--size-border-radius);
   font-size: var(--font-regular);
   padding: 8px 48px;
+  position: relative;
 }
+
 .category__btn:hover,
-.category__btn.active {
+.category__btn.selected {
   background-color: var(--color-pink);
   color: var(--color-white);
 }
@@ -339,24 +341,30 @@ div a {
   height: 24px;
   line-height: 24px;
   text-align: center;
-  position: relative;
-  top: -20px;
-  left: 4px;
+  position: absolute;
+  top: -5px;
+  right: 6px;
   opacity: 0;
   transition: all var(--animation-duration) ease-in;
 }
 
 .category__btn:hover .category__count,
-.category__btn.active .category__count {
+.category__btn.selected .category__count {
   background-color: var(--color-orange);
   opacity: 1;
-  top: 0px;
 } /*All버튼 카운트 고정시키기 */
 
 .work__projects {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  opacity: 1;
+  transition: all var(--animation-duration) ease-out;
+}
+/* btn클릭시(자바스크립트) animation발생되도록 함 */
+.work__projects.anim-out {
+  opacity: 0.6;
+  transform: scale(0.96) tranlateY(40px);
 }
 .project {
   position: relative;
@@ -387,17 +395,18 @@ div a {
   transform: translateY(20px);
 }
 .project__description h3 {
-  color: var(--color-white);
+  color: var(--color-yellow);
 }
 .project__description h3:after {
   display: block;
   position: relative; /*relative로 하고 left 50%, margin조정으로 가운데로 오도록*/
   left: 50%;
-  margin-left: -12px;
-  margin-top: 8px;
+  transform: translateX(-50%);
+  margin-top: 12px;
+  margin-bottom: 12px;
   content: "";
   background-color: var(--color-white);
-  width: 35px;
+  width: 100px;
   height: 2px;
 }
 .project:hover .project__description {
@@ -406,6 +415,10 @@ div a {
 }
 .project__description {
   font-size: 20px;
+}
+/*work category버튼 클릭시 프로젝트 조건에 맞는 project의 invisible 삭제 */
+.project.invisible {
+  display: none;
 }
 
 /*testimonials*/
@@ -481,13 +494,59 @@ div a {
   color: var(--color-dark-grey);
 }
 
+/*arrow up button*/
+.arrowup__btn {
+  position: fixed;
+  right: 35px;
+  bottom: 50px;
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 500ms ease-in;
+  transform: translateY(-10%) scale(1.2) rotateY(-90deg);
+}
+.arrowup__btn i {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  font-size: 60px;
+  line-height: 80px;
+  text-align: center;
+  color: var(--color-dark-pink);
+  background-color: rgb(225, 236, 16);
+  border: 2px solid var(--color-dark-grey);
+  border-radius: 50%;
+}
+.arrowup__btn.appear {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1) rotateY(0);
+}
+
 @media screen and (max-width: 768px) {
   /*토글버튼을 보이게하고, 
   NAVBAR메뉴 정렬 및 숨기기*/
+  :root {
+    /* Font size */
+    --font-large: 25px;
+    --font-medium: 18px;
+    --font-regular: 16px;
+    --font-small: 14px;
+    --font-micro: 12px;
+  }
+  .section {
+    padding: 16px; /* 모바일버전 16px가 좋다고 함 */
+    padding-top: 40px;
+  } /* 낭비되는 공간 없이 화면에 채워짐 */
 
   .navbar__toggle-btn {
     display: block;
     position: fixed;
+    z-index: 2;
+    top: 14px;
+    right: 20px;
+    font-size: var(--font-medium);
   }
 
   #navbar {
@@ -495,15 +554,26 @@ div a {
     flex-direction: column;
     align-items: flex-start;
   }
-
+  .Navbar__menu {
+    width: 100%;
+    text-align: center;
+  }
   .navbar__menu {
-    background-color: orange;
-    flex-direction: column;
-    text-align: center; /*상위박스가 폭이 작으면 정렬이 안됨*/
     display: none; /*메뉴 안보이도록*/
   }
 
+  .navbar__menu.open {
+    display: inline-block;
+    width: 50%;
+  } /*toggle btn누르면, 메뉴가 보이게 함*/
+
+  /*Home 사이즈 조정 */
+  .home__avatar {
+    width: 270px;
+    height: 270px;
+  }
   /* About me 정렬*/
+
   .about__majors {
     flex-direction: column;
   }
@@ -557,6 +627,33 @@ div a {
     padding-right: 15px;
   }
 
+  /* work 버튼 */
+  .work__categorys {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .category__btn:nth-child(1) {
+    flex-basis: 70%;
+    padding: 5px;
+  }
+  .category__btn:nth-child(2) {
+    flex-basis: 70%;
+    padding: 5px;
+  }
+  .category__btn:nth-child(3) {
+    flex-basis: 70%;
+    padding: 5px;
+  }
+  .category__btn:nth-child(4) {
+    flex-basis: 70%;
+    padding: 5px;
+  }
+  /* category 버튼 정렬 */
+  .category__btn {
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
   /*skills 수직정렬*/
   .skillset {
     flex-direction: column;
@@ -575,6 +672,15 @@ div a {
   .tools__list {
     margin-bottom: 0;
   }
+  /* job container 마진 줄이기 */
+  .job__container {
+    margin-top: 50px;
+  }
+  .job,
+  .job2 {
+    margin: auto;
+  }
+
   /*project사진을 꽉채우기*/
   .project {
     flex-grow: 1;
@@ -582,13 +688,29 @@ div a {
   .project__img {
     width: 80%;
   }
+
+  /*avatar사진과 텍스트를 수직정렬 */
+  .testimonial {
+    flex-direction: column;
+  }
+  .testimonial:last-of-type {
+    flex-direction: column-reverse;
+  }
+  .testimonial__avatar:nth-child(odd) {
+    margin: 10px 0;
+    margin-bottom: 8px;
+  }
+  .testimonial__avatar:nth-child(even) {
+    margin: 10px 0;
+    margin-bottom: 8px;
+  }
   /*avatar 사이즈 줄이기 */
   .testimonial__avatar {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
   }
   .testimonial__speech-bubble {
-    width: 100px;
+    width: 250px;
     height: 100px;
   }
   .testimonial__speech-bubble p,
@@ -596,4 +718,15 @@ div a {
     font-size: 13px;
     height: 50%;
   }
+}
+/*arrow up button 사이즈 및 위치 조정*/
+.arrowup__btn {
+  right: 15px;
+  bottom: 35px;
+}
+.arrowup__btn i {
+  font-size: 40px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
 }
