@@ -1,2 +1,2 @@
 # joy
- joy`s growth diary
+ about JOY
