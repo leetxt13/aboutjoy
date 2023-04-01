@@ -64,14 +64,14 @@ arrowup__btn.addEventListener("click", () => {
   home.scrollIntoView({ behavior: "smooth" });
 });
 
-//filtering work menu
+//filtering photo menu
 
-const workBtnContainer = document.querySelector(".work__categorys");
-const projectContainer = document.querySelector(".work__projects");
+const photoBtnContainer = document.querySelector(".photo__categorys");
+const projectContainer = document.querySelector(".photo__projects");
 const projects = document.querySelectorAll(".project");
 const project__animation = document.querySelector(".project__animation");
 
-workBtnContainer.addEventListener("click", (e) => {
+photoBtnContainer.addEventListener("click", (e) => {
   const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
   if (filter === null) {
     return;

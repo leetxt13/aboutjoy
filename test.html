@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>클릭이미지</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        input{display: none;}
+        label, .big-img{font-size: 0;}
+        .img-area{
+            width: 500px;
+            position: relative;
+            height: 550px;
+        }
+        .img-area .sub-img{
+            position: absolute;
+            top: 510px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .img-area .big-img img{
+            display: none;
+        }
+        input:checked ~ .big-img img{display: none;}
+        input:nth-child(1):checked ~ .big-img img:nth-child(1){display: block;}
+        input:nth-child(2):checked ~ .big-img img:nth-child(2){display: block;}
+        input:nth-child(3):checked ~ .big-img img:nth-child(3){display: block;}
+    </style>
+</head>
+<body>
+    <div class="img-area">
+    <input type="radio" id="rad1" name="img_tab" checked>
+    <input type="radio" id="rad2" name="img_tab">
+    <input type="radio" id="rad3" name="img_tab">
+    <div class="sub-img">
+        <label for="rad1">
+            <img src="http://placehold.it/50/abc" alt="이미지">
+        </label>
+        <label for="rad2">
+            <img src="http://placehold.it/50/cdd" alt="이미지">
+        </label>
+        <label for="rad3">
+            <img src="http://placehold.it/50/dae" alt="이미지">
+        </label>
+    </div>
+    <div class="big-img">
+        <img src="http://placehold.it/500/abc" alt="큰 이미지">
+        <img src="http://placehold.it/500/cdd" alt="큰 이미지">
+        <img src="http://placehold.it/500/dae" alt="큰 이미지">
+    </div>
+</div>
+</body>
+</html
