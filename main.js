@@ -59,7 +59,7 @@ document.addEventListener("scroll", () => {
     arrowup__btn.classList.remove("appear");
   }
 });
-// when clicking arrowup__btn, move to home menu
+// when clicking arrowup__btn, move to home  menu
 arrowup__btn.addEventListener("click", () => {
   home.scrollIntoView({ behavior: "smooth" });
 });

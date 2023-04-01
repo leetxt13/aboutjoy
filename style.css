@@ -671,7 +671,7 @@ div a {
     margin: auto;
   }
 
-  /*project사진을 꽉채우기*/
+  /*project사진을 꽉 채우기*/
   .project {
     flex-grow: 1;
   }
