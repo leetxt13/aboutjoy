@@ -648,7 +648,7 @@ div a {
   /*invitation 수직정렬*/
   .invitation__place,
   .invitation__time {
-    text-align: left;
+    text-align: center;
   }
 
   .hotel__map {
