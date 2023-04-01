@@ -220,6 +220,11 @@ div a {
   font-size: var(--font-small);
 }
 
+.major__name h2 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  font-size: 25px;
+}
 /*about - job */
 .job__container {
   margin-top: 100px;
