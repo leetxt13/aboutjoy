@@ -70,17 +70,22 @@ const photoBtnContainer = document.querySelector(".photo__categorys");
 const projectContainer = document.querySelector(".photo__projects");
 const projects = document.querySelectorAll(".project");
 const project__animation = document.querySelector(".project__animation");
+const section__container = document.querySelector(".section__container");
 
 photoBtnContainer.addEventListener("click", (e) => {
-  const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
-  if (filter === null) {
+  let filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+  console.log(filter);
+  if (filter === undefined) {
     return;
   }
+
   // Remove selection from the previous item and select the new one
   const active = document.querySelector(".category__btn.selected");
   active.classList.remove("selected");
-  const target =
-    e.target.nodeName === "BUTTON" ? e.target : e.target.parentNode;
+  let target = e.target.nodeName === "BUTTON" ? e.target : e.target.parentNode;
+  if (target.nodeName === "DIV") {
+    target.classList.remove("selected");
+  }
   target.classList.add("selected");
   // ↑↑클릭한 것은 CSS효과 활성화, 이전 것은 CSS효과 해제↑↑
 
